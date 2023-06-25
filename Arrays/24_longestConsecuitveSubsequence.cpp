@@ -7,7 +7,7 @@
 //         keep a track of longest subsequence  
 
 //         TC - O(nlogn) + O(n)
- 
+// https://leetcode.com/problems/longest-consecutive-sequence/
     int findLongestConseqSubseq(int arr[], int N)
     {
         sort(arr,arr+N);
