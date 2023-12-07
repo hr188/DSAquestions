@@ -22,7 +22,7 @@ int dp[1000005];
 //}
 int Tabulation(int n ){
     dp[0] = 0;
-    for(int i = 0 ; i<=n ; i++){
+    for(int i = 1 ; i<=n ; i++){
         for(char c :to_string(i)){
             dp[i] = min(dp[i], 1 + dp[i-(c-'0')]);
         }

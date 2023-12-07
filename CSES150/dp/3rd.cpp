@@ -6,22 +6,22 @@
 using namespace std;
 int MOD = 1e9+7;
 int64_t dp[1000006];
-//int solve(vector<int> &arr , int64_t x){
-//    if(x==0){
-//        return 1;
-//    }
-//    if(x<0){
-//        return 0 ;
-//    }
-//    if(dp[x]!=-1) return dp[x];
-//
-//    int64_t ans = 0 ;
-//    for(int i = 0 ; i <arr.size() ; i++){
-//        ans = (ans + solve(arr, x - arr[i])) % MOD;
-//    }
-//    return dp[x] =  ans;
-//}
-int64_t Taulation(vector<int> &arr , int64_t x){
+int solve(vector<int> &arr , int64_t x){
+    if(x==0){
+        return 1;
+    }
+    if(x<0){
+        return 0 ;
+    }
+    if(dp[x]!=-1) return dp[x];
+
+    int64_t ans = 0 ;
+    for(int i = 0 ; i <arr.size() ; i++){
+        ans = (ans + solve(arr, x - arr[i])) % MOD;
+    }
+    return dp[x] =  ans;
+}
+int64_t Tablation(vector<int> &arr , int64_t x){
     dp[0] = 1;
     for(int tar= 1 ; tar<=x ; tar++){
         int64_t ans = 0 ;
@@ -42,7 +42,7 @@ int main(){
     for(auto &val : arr) cin>>val;
 
     memset(dp, 0, sizeof(dp));
-    int64_t ans =  Taulation(arr, x);
+    int64_t ans =  solve(arr, x);
     cout<<ans<<endl;
 }
 

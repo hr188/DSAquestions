@@ -17,6 +17,7 @@ int main() {
   for (int&v : c) cin >> v;
   vector<int> dp(target+1,0);
   dp[0] = 1;
+  //filling in opposite manner 
   for(int i = 0 ; i<n ; i++){
     for(int val = 1 ; val<=target ; val++){
         if(val-c[i]>=0){

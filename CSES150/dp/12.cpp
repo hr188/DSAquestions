@@ -31,7 +31,7 @@ int main(){
         op.push_back(i);
         }
     }
-    cout<<cnt-1<<endl;
+    cout<<cnt-1<<endl; //we do not count reachable[0];
     for(int i =1 ; i<reachable.size() ; i++){
         if(reachable[i]==1){
             cout<<i<<" ";

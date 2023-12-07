@@ -5,7 +5,6 @@
 #include <algorithm>
 using namespace std;
 //int MOD = 1e9+7;
-
 int n ,x;
 vector<int>price;
 vector<int>pages;
@@ -28,7 +27,7 @@ for (int i = 1; i <= n; i++) {
       dp[i][j] = dp[i-1][j];
       int left = j-price[i-1];
       if (left >= 0) {
-	dp[i][j] = max(dp[i][j], dp[i-1][left]+pages[i-1]);
+	   dp[i][j] = max(dp[i][j], dp[i-1][left]+pages[i-1]);
       }
     }
   }
