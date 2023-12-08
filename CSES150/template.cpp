@@ -27,10 +27,9 @@ int gcd(int a, int b){
         a %= b;
     }
 }
-
 int lcm(int a, int b){
     int temp = gcd(a, b);
-     return temp ? (a / temp * b) : 0;
+    return temp ? (a / temp * b) : 0;
 }
 
 void solve(){

@@ -1,29 +1,46 @@
-//#include <bits/stdc++.h>
-#include <cmath>
-#include <iostream> 
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <stack>
-#include <queue>
-#include <set>
-#include <cstring>
-#include <limits>
-#include <climits>
-#include <algorithm>
+#include <iostream>
 #include <vector>
 using namespace std;
-#define endl '\n'
-#define int long long
-const int MOD = 1e9 +7;
-const int INF = LLONG_MAX>>1;
-// __gcd()
-signed main(){
-    ios_base::sync_with_stdio(false);cin.tie(NULL);
 
-    int tc =1 ; 
-    //cin>>tc;
-    while(tc--){
-       cout<<"h"<<endl;
+struct Stock {
+    int q, pt, sellTime;
+};
+int main() {
+    int n; cin >> n;
+    vector<Stock> s;
+    for (int i = 0; i < n; ++i) {
+        int q, pt, sellTime;
+        cin >> q >> pt >> sellTime;
+        s.push_back({q, pt, sellTime});
     }
+    int numDays; cin >> numDays;
+    vector<vector<int>> arr(n, vector<int>(numDays));
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < numDays; ++j) {
+            cin >> arr[i][j];
+        }
+    }
+    int queryTime; cin >> queryTime;
+    int rp = 0, unrp = 0;
+    for (int i = 0; i < n; ++i) {
+        int q = s[i].q;
+        int pt = s[i].pt;
+        int sellTime = s[i].sellTime;
+        if (pt <= queryTime) {
+            int currPrice = arr[i][queryTime - 1];
+            int purchasePrice = arr[i][pt - 1];
+            
+            if (sellTime == 0 || sellTime > queryTime) {
+                unrp += q * (currPrice - purchasePrice);
+            } else {
+                int sellPrice = arr[i][sellTime - 1];
+                rp += q * (sellPrice - purchasePrice);
+            }
+        }
+    }
+    cout  << rp << '\n'; cout << unrp;
+    return 0;
 }
+
+
+
